@@ -10,7 +10,7 @@
 #root > h2 {
   font-size: 36px;
   margin-bottom: 36px;
-  color: #ff0000;
+  color: var(--main-blue);
 }
 .carousel-inner {
   display: flex;
@@ -42,5 +42,5 @@
 }
 
 .carousel-button:hover {
-  color: #ff0000;
+  color: var(--main-blue);
 }

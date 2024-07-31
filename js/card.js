@@ -29,6 +29,7 @@ const makeDataToCards = async () => {
   addPaginationEventListeners(totalPage, START_PAGE);
   setActivePage(START_PAGE);
 };
+
 const setActivePage = (page) => {
   const pageNumbers = document.querySelectorAll(".page-number");
   pageNumbers.forEach((pageNumber) => {
@@ -43,6 +44,7 @@ const setActivePage = (page) => {
 const handleCardAlert = (id) => {
   alert(`영화 id: ${id}`);
 };
+
 export const handleNextClick = (totalpage) => {
   if (START_PAGE + 10 <= totalpage) {
     START_PAGE += 10;

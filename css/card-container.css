@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: 1px #fff solid;
+  border: 1px var(--main-white) solid;
   border-radius: 5px;
   width: 400px;
   height: 700px;
@@ -84,7 +84,7 @@
 
 .card-content::-webkit-scrollbar-thumb {
   height: 1%;
-  background: #ff0000; /* 스크롤바의 색상 */
+  background: var(--main-blue); /* 스크롤바의 색상 */
   border-radius: 10px;
 }
 
@@ -94,6 +94,6 @@
 
 .card-title::-webkit-scrollbar-thumb {
   height: 1%;
-  background: #ff0000; /* 스크롤바의 색상 */
+  background: var(--main-blue); /* 스크롤바의 색상 */
   border-radius: 10px;
 }

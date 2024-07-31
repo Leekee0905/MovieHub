@@ -21,6 +21,6 @@
 }
 
 .active {
-  color: #ff0000;
+  color: var(--main-blue);
   cursor: pointer;
 }
