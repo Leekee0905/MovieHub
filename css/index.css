@@ -3,6 +3,7 @@
 @import url("card-container.css");
 @import url("pagination.css");
 @import url("carousel.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -13,12 +14,18 @@
   font-style: normal;
 }
 
+:root {
+  --main-blue: #00a7f6;
+  --main-white: #fff;
+}
+
 html,
 body {
   height: 100%;
   position: relative;
   background-color: #000000;
-  color: #fff;
+  color: var(--main-white);
+  font-family: "Jua";
 }
 
 ul,
@@ -28,7 +35,7 @@ li {
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: var(--main-white);
 }
 
 #root {

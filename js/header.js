@@ -33,7 +33,7 @@ const createHeaderSearchInput = () => {
 };
 
 const navigateHeaderTitle = () => {
-  window.location.href = "/movie-search";
+  window.location.href = "/moviehub";
 };
 
 const handleSearchBtn = async (event) => {
@@ -45,7 +45,7 @@ const handleSearchBtn = async (event) => {
     alert("검색어를 입력해주세요.");
   } else {
     const data = await getSearchData(inputText, currentPage);
-    const listHTML = await makeCards(data, inputText);
+    const listHTML = makeCards(data, inputText);
     updatePagination(data.total_pages, 1);
     addPaginationEventListeners(data.total_pages);
     const noResult = document.createElement("div");

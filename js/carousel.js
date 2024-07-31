@@ -39,6 +39,7 @@ const renderCarousel = async () => {
   });
   carouselContainer.appendChild(carouselInner);
   carouselContainer.appendChild(buttonContainer);
+
   root.insertBefore(carouselTitle, header.nextSibling);
   root.insertBefore(carouselContainer, carouselTitle.nextSibling);
 
