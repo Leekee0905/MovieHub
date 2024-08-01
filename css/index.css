@@ -2,6 +2,7 @@
 @import url("header.css");
 @import url("card-container.css");
 @import url("pagination.css");
+@import url("upcoming.css");
 
 * {
   margin: 0;

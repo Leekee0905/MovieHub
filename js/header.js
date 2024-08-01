@@ -1,4 +1,4 @@
-import { makeCards } from "./card.js";
+import { makeCards, searchCards } from "./card.js";
 import { getSearchData } from "./getData.js";
 import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 
@@ -13,16 +13,17 @@ const createHeaderSearchInput = () => {
 
   searchInput.id = "search-input";
   searchInput.setAttribute("name", "keyword");
+  searchInput.setAttribute("placeholder", "키워드를 입력하세요");
   searchInput.autofocus = true;
 
   headerTitle.onclick = navigateHeaderTitle;
-  headerTitle.innerHTML = "LGS-Movie";
+  headerTitle.innerHTML = "MovieHub";
 
   formBox.id = "search-form";
 
   submitBtn.setAttribute("type", "submit");
   submitBtn.id = "search-btn";
-  submitBtn.innerHTML = "검색";
+  submitBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
 
   document.querySelector("#root").appendChild(createdHeader);
   document.querySelector("#header").appendChild(headerTitle);
