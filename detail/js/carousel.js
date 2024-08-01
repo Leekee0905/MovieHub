@@ -1,4 +1,4 @@
-import { getPlayingMovies } from "./getData.js";
+import { getPlayingMovies } from "../../js/getData.js";
 
 const renderCarousel = async () => {
   const root = document.querySelector("#root");
