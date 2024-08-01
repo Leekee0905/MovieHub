@@ -1,31 +1,37 @@
 import { getUpcomeList } from "./getData.js";
+import { searchCards } from "./card.js";
 
 export const upcomeFunc = async () => {
   const data = await getUpcomeList();
-  const upComingMovies = data.results;
-
-  const upcomeContainer = document.getElementById("upcoming-container");
-
   const root = document.querySelector("#root");
   const header = document.querySelector("#header");
+  const searchInput = document.querySelector("input");
 
-  // * 랜덤으로 영화가져오기 *
-  let upCome = upComingMovies[Math.floor(Math.random() * upComingMovies.length)];
+  const upComingMovies = data.results;
+  const upCome = upComingMovies[Math.floor(Math.random() * upComingMovies.length)];
   const comeCard = randomMovie(upCome);
-  if (comeCard) {
-    upcomeContainer.appendChild(comeCard);
-  }
 
-  // root.insertBefore(upcomeContainer, header.nextSibling);
+  const upcomeContainer = document.createElement("div");
+  upcomeContainer.id = "upcoming-container";
+
+  root.insertBefore(upcomeContainer, header.nextSibling);
+  upcomeContainer.innerHTML = comeCard;
+
+  searchInput.addEventListener("input", (e) => {
+    let keyUpValues = e.target.value;
+    searchCards(keyUpValues);
+    console.log(upcomeContainer);
+    if (keyUpValues) {
+      upcomeContainer.style.display = "none";
+    } else {
+      upcomeContainer.style.display = "flex";
+    }
+  });
 };
 
 //upcoming 화면 만들기
 function randomMovie(upCome) {
-  const upcomeContainer = document.createElement("div");
-
-  upcomeContainer.id = "upcoming-container";
-
-  upcomeContainer.innerHTML = `
+  const upComeHtml = `
   <img src="https://image.tmdb.org/t/p/w500/${upCome.backdrop_path}"  alt="${upCome.title}" />
     <div class="upcoming-text">
         <h2 class="under-line">UpComing Movies!</h2>
@@ -33,5 +39,5 @@ function randomMovie(upCome) {
         <p>${upCome.overview}</p>
     </div>
   `;
-  return upcomeContainer;
+  return upComeHtml;
 }

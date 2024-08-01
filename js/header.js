@@ -13,6 +13,7 @@ const createHeaderSearchInput = () => {
 
   searchInput.id = "search-input";
   searchInput.setAttribute("name", "keyword");
+  searchInput.setAttribute("placeholder", "키워드를 입력하세요");
   searchInput.autofocus = true;
 
   headerTitle.onclick = navigateHeaderTitle;
@@ -23,16 +24,6 @@ const createHeaderSearchInput = () => {
   submitBtn.setAttribute("type", "submit");
   submitBtn.id = "search-btn";
   submitBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
-
-  searchInput.addEventListener("input", (e) => {
-    let keyUpValues = e.target.value;
-    searchCards(keyUpValues);
-    // if (keyUpValues) {
-    //   upcomingContainer.style.display = "none";
-    // } else {
-    //   upcomingContainer.style.display = "block";
-    // }
-  });
 
   document.querySelector("#root").appendChild(createdHeader);
   document.querySelector("#header").appendChild(headerTitle);
@@ -66,12 +57,6 @@ const handleSearchBtn = async (event) => {
       cardList.appendChild(noResult);
     }
   }
-
-  // if (inputText) {
-  //   cardList.style.display = "none";
-  // } else {
-  //   cardList.style.display = "block";
-  // }
 };
 
 export default createHeaderSearchInput;
