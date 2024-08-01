@@ -1,4 +1,4 @@
-import { makeCards } from "./card.js";
+import { makeCards, searchCards } from "./card.js";
 import { getSearchData } from "./getData.js";
 import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 
@@ -16,13 +16,23 @@ const createHeaderSearchInput = () => {
   searchInput.autofocus = true;
 
   headerTitle.onclick = navigateHeaderTitle;
-  headerTitle.innerHTML = "LGS-Movie";
+  headerTitle.innerHTML = "MovieHub";
 
   formBox.id = "search-form";
 
   submitBtn.setAttribute("type", "submit");
   submitBtn.id = "search-btn";
-  submitBtn.innerHTML = "검색";
+  submitBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
+
+  searchInput.addEventListener("input", (e) => {
+    let keyUpValues = e.target.value;
+    searchCards(keyUpValues);
+    // if (keyUpValues) {
+    //   upcomingContainer.style.display = "none";
+    // } else {
+    //   upcomingContainer.style.display = "block";
+    // }
+  });
 
   document.querySelector("#root").appendChild(createdHeader);
   document.querySelector("#header").appendChild(headerTitle);
@@ -56,6 +66,12 @@ const handleSearchBtn = async (event) => {
       cardList.appendChild(noResult);
     }
   }
+
+  // if (inputText) {
+  //   cardList.style.display = "none";
+  // } else {
+  //   cardList.style.display = "block";
+  // }
 };
 
 export default createHeaderSearchInput;
