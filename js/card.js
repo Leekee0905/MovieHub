@@ -3,7 +3,7 @@ import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 
 let START_PAGE = 1;
 
-const makeDataToCards = async () => {
+export const makeDataToCards = async () => {
   const root = document.querySelector("#root");
   const cardContainer = document.createElement("div");
   const cardList = document.createElement("ul");
@@ -16,14 +16,6 @@ const makeDataToCards = async () => {
   const totalPage = data.total_pages;
   const html = makeCards(data);
   cardList.innerHTML = html;
-
-  cardContainer.addEventListener("click", (event) => {
-    const cardBox = event.target.closest(".card-box");
-    if (cardBox) {
-      const id = cardBox.getAttribute("key");
-      handleCardAlert(id);
-    }
-  });
 
   updatePagination(totalPage, START_PAGE);
   addPaginationEventListeners(totalPage, START_PAGE);
@@ -39,10 +31,6 @@ const setActivePage = (page) => {
       pageNumber.classList.remove("active");
     }
   });
-};
-
-const handleCardAlert = (id) => {
-  alert(`영화 id: ${id}`);
 };
 
 export const handleNextClick = (totalpage) => {
@@ -90,7 +78,7 @@ export const makeCards = (data) => {
       }
       return `
           <li class="card-list-contents">
-            <div class="card-box" key=${element.id}>
+            <a class="card-box" key=${element.id} href='/detail/index.html?id=${element.id}'>
               <div class="card-image">
                   <img src="https://image.tmdb.org/t/p/w200${element.poster_path}" alt="${element.title}"/>
               </div>
@@ -103,12 +91,26 @@ export const makeCards = (data) => {
               <div class="card-vote">
                 평점: ${element.vote_average}
               </div>
-            </div>
+            </a>
           </li>
         `;
     })
     .join("");
   return html;
+};
+
+// * 검색값 포함되는 것만 보여주기 *
+export const searchCards = () => {
+  const movieCards = document.querySelectorAll(".card-list-contents");
+  movieCards.forEach((card) => {
+    const searchInput = document.querySelector("#search-input").value;
+    const movieTitle = card.querySelector("h3").textContent.toLowerCase();
+    if (movieTitle.includes(searchInput)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
 };
 
 export default makeDataToCards;
