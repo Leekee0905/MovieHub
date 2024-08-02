@@ -100,17 +100,17 @@ export const makeCards = (data) => {
 };
 
 // * 검색값 포함되는 것만 보여주기 *
-export const searchCards = () => {
-  const movieCards = document.querySelectorAll(".card-list-contents");
-  movieCards.forEach((card) => {
-    const searchInput = document.querySelector("#search-input").value;
-    const movieTitle = card.querySelector("h3").textContent.toLowerCase();
-    if (movieTitle.includes(searchInput)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  });
-};
+// export const searchCards = () => {
+//   const movieCards = document.querySelectorAll(".card-list-contents");
+//   movieCards.forEach((card) => {
+//     const searchInput = document.querySelector("#search-input").value;
+//     const movieTitle = card.querySelector("h3").textContent.toLowerCase();
+//     if (movieTitle.includes(searchInput)) {
+//       card.style.display = "block";
+//     } else {
+//       card.style.display = "none";
+//     }
+//   });
+// };
 
 export default makeDataToCards;
