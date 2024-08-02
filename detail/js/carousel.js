@@ -47,7 +47,7 @@ const renderCarousel = async () => {
   carousel.appendChild(carouselInner);
   carousel.appendChild(buttonContainer);
   carouselContainer.appendChild(carousel);
-  root.insertBefore(carouselContainer, header.nextSibling);
+  root.insertBefore(carouselContainer, detail.nextSibling);
   const getItemsToShow = () => {
     if (window.innerWidth <= 600) {
       return 1;

@@ -1,10 +1,12 @@
 #card-detail-container {
-  width: 100%;
+  width: 90%;
   height: auto;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   padding: 20px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid #626262;
 }
 #card-detail-container > figure {
   width: 100%;
@@ -12,4 +14,17 @@
 }
 #card-detail-container figure img {
   width: 100%;
+}
+.card-detail {
+  margin-right: 100px;
+}
+.card-detail h1 {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+.card-detail p {
+  width: 80%;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 30px;
 }
