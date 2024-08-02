@@ -1,0 +1,52 @@
+#comment-area {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#name-password-container {
+    display: flex;
+    gap: 10px; 
+    margin-bottom: 10px;
+}
+
+#name-input,
+#password-input {
+    flex: 1; 
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#comment-form {
+    display: flex;
+    flex-direction: column; 
+}
+
+#comment-input-container {
+    display: flex;
+    gap: 10px; 
+    margin-bottom: 10px;
+}
+
+#comment-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#comment-button {
+    width: 100px;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#comment-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
