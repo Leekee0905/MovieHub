@@ -70,11 +70,11 @@ export const review = () => {
   commentForm.appendChild(namePasswordContainer);
   commentForm.appendChild(commentInputContainer);
 
-  const commentList = document.createElement("ul");
-  commentList.id = "comment-list";
+  // const commentList = document.createElement("li");
+  // commentList.id = "comment-list";
 
   commentArea.appendChild(commentForm);
-  commentArea.appendChild(commentList);
+  // commentArea.appendChild(commentList);
   reviewInput.appendChild(commentArea);
   namePasswordContainer.appendChild(nameInput);
   namePasswordContainer.appendChild(passWordInput);
@@ -174,6 +174,7 @@ export const review = () => {
       const nameText = nameInput.value.trim();
       const commentText = commentInput.value.trim();
       const password = passWordInput.value.trim();
+      const commentList = document.createElement("ul");
 
       const newComment = document.createElement("li");
       newComment.innerHTML = `<span class="comment-name">${nameText}</span>: ${commentText}`;
