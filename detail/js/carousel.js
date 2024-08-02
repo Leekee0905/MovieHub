@@ -7,6 +7,7 @@ const renderCarousel = async () => {
   const movies = data.results;
 
   const header = root.querySelector("#header");
+  const detail = root.querySelector("#card-detail-container");
 
   const carouselContainer = document.createElement("div");
   carouselContainer.classList.add("carousel-container");
