@@ -135,15 +135,28 @@ export const review = () => {
       commentFixedBtn.addEventListener("click", (event) => {
         const check = prompt("비밀 번호를 입력해주세요.");
         const commentIndex = event.target.parentElement.id.split(" ")[1];
-        const commentFilter = JSON.parse(localStorage.getItem("comments")).map((element, index) => {
-          return Number(commentIndex) !== index;
-        });
-        localStorage.setItem("comments", JSON.stringify(commentFilter));
+        if (check.length === 0) {
+          alert("비밀 번호를 입력해주세요.");
+        } else if (check === JSON.parse(localStorage.getItem("comments"))[commentIndex].password) {
+          const modifiedInput = prompt("수정사항을 입력해주세요.");
+          if (modifiedInput === null) {
+            alert("빈 값입니다. 수정사항을 입력해주세요.");
+          } else {
+            const nowComment = JSON.parse(localStorage.getItem("comments"));
+            const fixedComment = nowComment.map((e, idx) => {
+              return { ...e, text: modifiedInput };
+            });
+            console.log(fixedComment);
+            localStorage.setItem("comments", JSON.stringify(fixedComment));
+          }
+        } else {
+          alert("비밀번호가 틀렸습니다.");
+        }
+
         loadComments();
       });
     });
   };
-  console.log("hi");
 
   const saveComment = (name, text, password) => {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
