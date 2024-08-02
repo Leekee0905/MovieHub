@@ -1,10 +1,6 @@
 export const review = () => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = './css/review-input.css';
-    document.head.appendChild(link);
 
-    const reviewInput = document.getElementById('review-input');
+    const reviewInput = document.getElementById('root');
 
     const commentArea = document.createElement('div');
     commentArea.id = 'comment-area';
