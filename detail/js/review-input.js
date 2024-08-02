@@ -132,8 +132,18 @@ export const review = () => {
         localStorage.setItem("comments", JSON.stringify(commentFilter));
         loadComments();
       });
+      commentFixedBtn.addEventListener("click", (event) => {
+        const check = prompt("비밀 번호를 입력해주세요.");
+        const commentIndex = event.target.parentElement.id.split(" ")[1];
+        const commentFilter = JSON.parse(localStorage.getItem("comments")).map((element, index) => {
+          return Number(commentIndex) !== index;
+        });
+        localStorage.setItem("comments", JSON.stringify(commentFilter));
+        loadComments();
+      });
     });
   };
+  console.log("hi");
 
   const saveComment = (name, text, password) => {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
