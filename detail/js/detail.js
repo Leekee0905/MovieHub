@@ -7,7 +7,6 @@ export const createMovieDetailTop = async () => {
   const header = document.querySelector("#header");
 
   const movieId = new URLSearchParams(window.location.search).get("id");
-  console.log(movieId);
 
   if (movieId) {
     try {

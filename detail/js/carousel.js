@@ -6,7 +6,6 @@ const renderCarousel = async () => {
   const data = await getRecommendationsMovieData(queryId);
   const movies = data.results;
 
-  const header = root.querySelector("#header");
   const detail = root.querySelector("#card-detail-container");
 
   const carouselContainer = document.createElement("div");
@@ -48,6 +47,7 @@ const renderCarousel = async () => {
   carousel.appendChild(buttonContainer);
   carouselContainer.appendChild(carousel);
   root.insertBefore(carouselContainer, detail.nextSibling);
+
   const getItemsToShow = () => {
     if (window.innerWidth <= 600) {
       return 1;
