@@ -17,7 +17,7 @@ export const createMovieDetailTop = async () => {
       <div class="card-detail">
           <h1>${data.title}</h1>
           <p>${data.overview}</p>
-          <p>${data.vote_average}</p>
+          <span>${data.vote_average}</span>
         </div>
         <figure>
           <img src="https://image.tmdb.org/t/p/w200${data.poster_path}" alt="${data.title}"/>
