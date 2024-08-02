@@ -143,6 +143,7 @@ export const review = () => {
       });
     });
   };
+  console.log("hi");
 
   const saveComment = (name, text, password) => {
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
