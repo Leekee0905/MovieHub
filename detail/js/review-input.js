@@ -70,8 +70,8 @@ export const review = () => {
   commentForm.appendChild(namePasswordContainer);
   commentForm.appendChild(commentInputContainer);
 
-  // const commentList = document.createElement("ul");
-  // commentList.id = "comment-list";
+  const commentList = document.createElement("ul");
+  commentList.id = "comment-list";
 
   commentArea.appendChild(commentForm);
   // commentArea.appendChild(commentList);
