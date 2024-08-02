@@ -48,36 +48,46 @@ const renderCarousel = async () => {
   carouselContainer.appendChild(carousel);
   root.insertBefore(carouselContainer, header.nextSibling);
   const getItemsToShow = () => {
-    if (window.innerWidth <= 480) {
+    if (window.innerWidth <= 600) {
       return 1;
-    } else if (window.innerWidth <= 768) {
+    } else if (window.innerWidth <= 1140) {
       return 2;
-    } else if (window.innerWidth <= 1200) {
+    } else if (window.innerWidth <= 1500) {
       return 3;
     } else {
       return 4;
     }
   };
-  const itemsToShow = getItemsToShow();
+  let itemsToShow = getItemsToShow();
   const totalItems = movies.length;
   let index = 0;
 
   const updateCarousel = () => {
     const offset = -index * (100 / itemsToShow);
     carouselInner.style.transform = `translateX(${offset}%)`;
+    console.log(offset, index, itemsToShow);
   };
 
   const showNextItem = () => {
     index = (index + itemsToShow) % totalItems;
+
+    if (itemsToShow === 3 && (index === 1 || index === 2)) {
+      index = 0;
+    }
     updateCarousel();
   };
 
   const showPrevItem = () => {
     index = (index - itemsToShow + totalItems) % totalItems;
+    if (itemsToShow === 3 && (index === 19 || index === 17)) {
+      index = 18;
+    }
     updateCarousel();
   };
 
   window.addEventListener("resize", () => {
+    itemsToShow = getItemsToShow();
+    console.log(itemsToShow);
     updateCarousel();
   });
 
