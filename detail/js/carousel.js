@@ -1,17 +1,22 @@
-import { getPlayingMovies } from "../../js/getData.js";
+import { getRecommendationsMovieData } from "../../js/getData.js";
 
 const renderCarousel = async () => {
   const root = document.querySelector("#root");
-  const data = await getPlayingMovies();
+  const queryId = new URLSearchParams(window.location.search).get("id");
+  const data = await getRecommendationsMovieData(queryId);
   const movies = data.results;
 
   const header = root.querySelector("#header");
 
-  const carouselTitle = document.createElement("h2");
-  carouselTitle.innerHTML = "현재 상영중인 영화";
-
   const carouselContainer = document.createElement("div");
-  carouselContainer.classList.add("carousel");
+  carouselContainer.classList.add("carousel-container");
+
+  const title = document.createElement("h2");
+  title.id = "recommend-movie";
+  title.innerHTML = "추천 영화";
+  carouselContainer.appendChild(title);
+  const carousel = document.createElement("div");
+  carousel.classList.add("carousel");
 
   const carouselInner = document.createElement("div");
   carouselInner.classList.add("carousel-inner");
@@ -37,13 +42,23 @@ const renderCarousel = async () => {
     </div>`;
     carouselInner.innerHTML += temp;
   });
-  carouselContainer.appendChild(carouselInner);
-  carouselContainer.appendChild(buttonContainer);
 
-  root.insertBefore(carouselTitle, header.nextSibling);
-  root.insertBefore(carouselContainer, carouselTitle.nextSibling);
-
-  const itemsToShow = 4;
+  carousel.appendChild(carouselInner);
+  carousel.appendChild(buttonContainer);
+  carouselContainer.appendChild(carousel);
+  root.insertBefore(carouselContainer, header.nextSibling);
+  const getItemsToShow = () => {
+    if (window.innerWidth <= 480) {
+      return 1;
+    } else if (window.innerWidth <= 768) {
+      return 2;
+    } else if (window.innerWidth <= 1200) {
+      return 3;
+    } else {
+      return 4;
+    }
+  };
+  const itemsToShow = getItemsToShow();
   const totalItems = movies.length;
   let index = 0;
 
@@ -62,22 +77,16 @@ const renderCarousel = async () => {
     updateCarousel();
   };
 
-  const startCarousel = () => setInterval(showNextItem, 5000);
-
-  let carouselInterval = startCarousel();
-
-  const stopCarousel = () => clearInterval(carouselInterval);
+  window.addEventListener("resize", () => {
+    updateCarousel();
+  });
 
   nextBtn.addEventListener("click", () => {
-    stopCarousel();
     showNextItem();
-    carouselInterval = startCarousel();
   });
 
   prevBtn.addEventListener("click", () => {
-    stopCarousel();
     showPrevItem();
-    carouselInterval = startCarousel();
   });
 
   updateCarousel();
