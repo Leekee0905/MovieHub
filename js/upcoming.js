@@ -1,5 +1,6 @@
-import { getUpcomeList } from "./getData.js";
-import { searchCards } from "./card.js";
+import { makeCards } from "./card.js";
+import { getSearchData, getUpcomeList } from "./getData.js";
+// import { searchCards } from "./card.js";
 
 export const upcomeFunc = async () => {
   const data = await getUpcomeList();
@@ -17,10 +18,13 @@ export const upcomeFunc = async () => {
   root.insertBefore(upcomeContainer, header.nextSibling);
   upcomeContainer.innerHTML = comeCard;
 
-  searchInput.addEventListener("input", (e) => {
+  searchInput.addEventListener("input", async (e) => {
     let keyUpValues = e.target.value;
-    searchCards(keyUpValues);
-    console.log(upcomeContainer);
+    const searchData = await getSearchData(keyUpValues, 1);
+    const cardList = document.querySelector("#card-list");
+    cardList.innerHTML = makeCards(searchData);
+    // console.log(searchData);
+
     if (keyUpValues) {
       upcomeContainer.style.display = "none";
     } else {

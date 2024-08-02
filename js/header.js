@@ -1,4 +1,4 @@
-import { makeCards, searchCards } from "./card.js";
+import { makeCards } from "./card.js";
 import { getSearchData } from "./getData.js";
 import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 
