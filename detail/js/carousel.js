@@ -6,6 +6,7 @@ const renderCarousel = async () => {
   const movies = data.results;
 
   const header = root.querySelector("#header");
+  const detail = root.querySelector("#card-detail-container");
 
   const carouselTitle = document.createElement("h2");
   carouselTitle.innerHTML = "현재 상영중인 영화";
@@ -40,7 +41,7 @@ const renderCarousel = async () => {
   carouselContainer.appendChild(carouselInner);
   carouselContainer.appendChild(buttonContainer);
 
-  root.insertBefore(carouselTitle, header.nextSibling);
+  root.insertBefore(carouselTitle, detail.nextSibling);
   root.insertBefore(carouselContainer, carouselTitle.nextSibling);
 
   const itemsToShow = 4;

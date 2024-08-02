@@ -1,17 +1,33 @@
-import { getMovieDetail } from "../../js/getData";
+import { getMovieDetail } from "../../js/getData.js";
 
 export const createMovieDetailTop = async () => {
   const root = document.querySelector("#root");
   const createContainer = document.createElement("div");
-  createContainer.className("card-detail-container");
+  createContainer.id = "card-detail-container";
+  const header = document.querySelector("#header");
 
   const movieId = new URLSearchParams(window.location.search).get("id");
-  
-  try {
-    const data = await getMovieDetail(movieId);
+  console.log(movieId);
 
-    
+  if (movieId) {
+    try {
+      const data = await getMovieDetail(movieId);
+
+      createContainer.innerHTML = `
+      <div class="card-detail">
+          <h1>${data.title}</h1>
+          <p>${data.overview}</p>
+          <p>${data.vote_average}</p>
+        </div>
+        <figure>
+          <img src="https://image.tmdb.org/t/p/w200${data.poster_path}" alt="${data.title}"/>
+        </figure>
+    `;
+      root.insertBefore(createContainer, header.nextSibling);
+    } catch (e) {
+      console.log("정보로드오류", e);
+    }
+  } else {
+    createContainer.innerHTML = `<p>해당 영화를 찾을 수 없습니다.</p>`;
   }
-
-
 };
