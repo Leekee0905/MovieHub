@@ -75,7 +75,6 @@ export const review = () => {
 
   commentArea.appendChild(commentForm);
   // commentArea.appendChild(commentList);
-  reviewInput.appendChild(commentArea);
   namePasswordContainer.appendChild(nameInput);
   namePasswordContainer.appendChild(passWordInput);
   commentInputContainer.appendChild(commentInput);
