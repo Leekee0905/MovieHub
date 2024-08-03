@@ -19,7 +19,7 @@ export const createMovieDetailTop = async () => {
           <span>${data.vote_average}</span>
         </div>
         <figure>
-          <img src="https://image.tmdb.org/t/p/w200${data.poster_path}" alt="${data.title}"/>
+          <img src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title}"/>
         </figure>
     `;
       // root.appendChild(createContainer);
