@@ -106,13 +106,14 @@ export const review = () => {
       const newComment = document.createElement("li");
       const commentDeleteBtn = document.createElement("button");
       const commentFixedBtn = document.createElement("button");
-      commentDeleteBtn.textContent = "삭제하기";
-      commentFixedBtn.textContent = "수정하기";
+      commentDeleteBtn.textContent = "삭제";
+      commentFixedBtn.textContent = "수정";
 
-      commentDeleteBtn.classList.add = "delete-btn";
-      commentFixedBtn.classList.add = "fix-btn";
+      commentDeleteBtn.className = "delete-btn";
+      commentFixedBtn.className = "fix-btn";
 
       newComment.id = `comment-list ${index}`;
+      newComment.className = "comment-list";
       newComment.innerHTML = `
           <h2 class="comment-name">${comment.name}</h2> 
           <p class="comment-text">${comment.text}</p>
