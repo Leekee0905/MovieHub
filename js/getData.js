@@ -1,5 +1,5 @@
 export const getTopRatedMoviesList = async (params) => {
-  const url = `https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=${params}`;
+  const url = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${params}`;
   const options = {
     method: "GET",
     headers: {
@@ -14,7 +14,7 @@ export const getTopRatedMoviesList = async (params) => {
 };
 
 export const getPlayingMovies = async () => {
-  const url = `https://api.themoviedb.org/3/movie/now_playing?language=ko-KR`;
+  const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US`;
   const options = {
     method: "GET",
     headers: {
@@ -28,7 +28,7 @@ export const getPlayingMovies = async () => {
 };
 
 export const getSearchData = async (keyword, page) => {
-  const url = `https://api.themoviedb.org/3/search/movie?language=ko-KR&query=${keyword}&page=${page}`;
+  const url = `https://api.themoviedb.org/3/search/movie?language=en-US&query=${keyword}&page=${page}`;
   const options = {
     method: "GET",
     headers: {
@@ -73,7 +73,7 @@ export const getRecommendationsMovieData = async (id) => {
 };
 
 export const getMovieDetail = async (id) => {
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=ko-KR`;
+  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
   const options = {
     method: "GET",
     headers: {
