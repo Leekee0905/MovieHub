@@ -6,7 +6,7 @@ const initialize = async () => {
   createHeaderSearchInput();
   await createMovieDetailTop();
   await renderCarousel();
-  review();
+  review(movieId);
 };
 
 initialize();
