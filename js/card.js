@@ -79,18 +79,18 @@ export const makeCards = (data) => {
       return `
           <li class="card-list-contents">
             <a class="card-box" key=${element.id} href='/detail/index.html?id=${element.id}'>
+              <p class="card-vote">
+                평점: ${element.vote_average}
+              </p>
               <div class="card-image">
                   <img src="https://image.tmdb.org/t/p/w200${element.poster_path}" alt="${element.title}"/>
               </div>
-              <h3 class="card-title">
-                ${element.title}
-              </h3>
-              <div class="card-content">
-                ${element.overview}
-              </div>
-              <div class="card-vote">
-                평점: ${element.vote_average}
-              </div>
+                <h3 class="card-title">
+                  ${element.title}
+                </h3>
+                <div class="card-content">
+                  ${element.overview}
+                </div>
             </a>
           </li>
         `;

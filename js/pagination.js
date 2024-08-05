@@ -3,8 +3,8 @@ import { handlePrevClick, handleNextClick, handlePageNumberClick } from "./card.
 const pagination = (total_pages, start_Page) => {
   const pages_per_Group = 10;
   let temp_html = "";
-  const next_btn = `<li><a id="next">></a></li>`;
-  const prev_btn = `<li><a id="prev"><</a></li>`;
+  const next_btn = `<li><a id="next"><i class="fa-solid fa-angle-right"></i></a></li>`;
+  const prev_btn = `<li><a id="prev"><i class="fa-solid fa-angle-left"></i></a></li>`;
   temp_html += prev_btn;
   const end_page = Math.min(total_pages, start_Page + pages_per_Group - 1);
   for (let i = start_Page; i <= end_page; i++) {

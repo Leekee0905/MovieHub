@@ -18,7 +18,6 @@ const createHeaderSearchInput = () => {
 
   headerTitle.onclick = navigateHeaderTitle;
   headerTitle.innerHTML = "MovieHub";
-
   formBox.id = "search-form";
 
   submitBtn.setAttribute("type", "submit");
