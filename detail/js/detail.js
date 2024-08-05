@@ -1,4 +1,4 @@
-import { getMovieDetail } from "../../js/getData.js";
+import { getMovieDetail, getMovieImages } from "../../js/getData.js";
 
 export const createMovieDetailTop = async () => {
   const root = document.querySelector("#root");
@@ -11,18 +11,24 @@ export const createMovieDetailTop = async () => {
   if (movieId) {
     try {
       const data = await getMovieDetail(movieId);
-
+      const images = await getMovieImages(movieId);
+      const mostVotedBackdrop = images.backdrops
+        .filter((e) => e.iso_639_1 === "en")
+        .sort((a, b) => b.vote_average - a.vote_average)[0].file_path;
+      console.log(data);
+      createContainer.setAttribute(
+        "style",
+        `background-image: url(https://image.tmdb.org/t/p/original${mostVotedBackdrop})`
+      );
       createContainer.innerHTML = `
-      <div class="card-detail">
-          <h1>${data.title}</h1>
-          <p>${data.overview}</p>
-          <span>${data.vote_average}</span>
-        </div>
-        <figure>
-          <img src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title}"/>
-        </figure>
+      <div class="card-detail" >
+      <img src="https://image.tmdb.org/t/p/w200${data.poster_path}" alt="${data.title}"/>
+        <h1>${data.title}</h1>
+        <p>${data.overview}</p>
+        <span>${data.vote_average}</span>
+      </div>
+        
     `;
-      // root.appendChild(createContainer);
       root.insertBefore(createContainer, header.nextSibling);
     } catch (e) {
       console.log("정보로드오류", e);
