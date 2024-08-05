@@ -2,7 +2,6 @@
   width: 100%;
   height: 120px;
   margin-bottom: 80px;
-  padding: 0 40px;
   line-height: 100px;
   color: var(--main-blue);
   display: flex;
@@ -12,11 +11,14 @@
 }
 
 #header > h1 {
+  padding-left: 50px;
   font-size: 50px;
   cursor: pointer;
+  font-family: "Oswald", sans-serif;
 }
 
 #search-form {
+  padding-right: 50px;
   display: flex;
   align-items: center;
 }
