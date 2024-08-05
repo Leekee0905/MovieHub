@@ -83,7 +83,7 @@
   width: 4px;
 }
 .card-content::-webkit-scrollbar-thumb {
-  background: var(--main-blue); /* 스크롤바의 색상 */
+  background: var(--main-blue);
   border-radius: 10px;
 }
 .card-title::-webkit-scrollbar {
@@ -91,6 +91,19 @@
 }
 .card-title::-webkit-scrollbar-thumb {
   height: 1%;
-  background: var(--main-blue); /* 스크롤바의 색상 */
+  background: var(--main-blue);
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1399px) and (min-width: 1024px) {
+  .card-list-contents {
+    width: 400px;
+    margin: 0 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #card-list {
+    flex-direction: column;
+  }
 }
