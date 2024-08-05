@@ -1,5 +1,6 @@
 import { makeCards } from "./card.js";
-import { getSearchData, getUpcomeList } from "./getData.js";
+import { getSearchData, getTopRatedMoviesList, getUpcomeList } from "./getData.js";
+import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 // import { searchCards } from "./card.js";
 
 export const upcomeFunc = async () => {
@@ -20,9 +21,11 @@ export const upcomeFunc = async () => {
 
   searchInput.addEventListener("input", async (e) => {
     let keyUpValues = e.target.value;
-    const searchData = await getSearchData(keyUpValues, 1);
+    const searchData = e.target.value === "" ? await getTopRatedMoviesList(1) : await getSearchData(keyUpValues, 1);
     const cardList = document.querySelector("#card-list");
     cardList.innerHTML = makeCards(searchData);
+    updatePagination(searchData.total_pages, 1);
+    addPaginationEventListeners(searchData.total_pages);
     // console.log(searchData);
 
     if (keyUpValues) {
