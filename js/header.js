@@ -34,7 +34,11 @@ const createHeaderSearchInput = () => {
 };
 
 const navigateHeaderTitle = () => {
-  window.location.href = "/moviehub";
+  if (window.location.href.split("/").includes("127.0.0.1:5500")) {
+    window.location.href = "/";
+  } else {
+    window.location.href = "/moviehub";
+  }
 };
 
 const handleSearchBtn = async (event) => {
