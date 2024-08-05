@@ -70,11 +70,7 @@ export const review = () => {
   commentForm.appendChild(namePasswordContainer);
   commentForm.appendChild(commentInputContainer);
 
-  // const commentList = document.createElement("li");
-  // commentList.id = "comment-list";
-
   commentArea.appendChild(commentForm);
-  // commentArea.appendChild(commentList);
   namePasswordContainer.appendChild(nameInput);
   namePasswordContainer.appendChild(passWordInput);
   commentInputContainer.appendChild(commentInput);
@@ -109,10 +105,11 @@ export const review = () => {
       commentDeleteBtn.textContent = "삭제하기";
       commentFixedBtn.textContent = "수정하기";
 
-      commentDeleteBtn.classList.add = "delete-btn";
-      commentFixedBtn.classList.add = "fix-btn";
+      commentDeleteBtn.className = "delete-btn";
+      commentFixedBtn.className = "fix-btn";
 
-      newComment.id = `comment-list ${index}`;
+      newComment.classList.add = `comment-list ${index}`;
+      newComment.id = `${index}`;
       newComment.innerHTML = `
           <h2 class="comment-name">${comment.name}</h2> 
           <p class="comment-text">${comment.text}</p>
@@ -122,15 +119,22 @@ export const review = () => {
       newComment.appendChild(commentFixedBtn);
       commentContainer.appendChild(newComment);
 
-      //삭제버튼
       commentDeleteBtn.addEventListener("click", (event) => {
+        const check = prompt("비밀 번호를 입력해주세요.");
         const commentIndex = event.target.parentElement.id.split(" ")[1];
-        const commentFilter = JSON.parse(localStorage.getItem("comments")).filter((element, index) => {
-          return Number(commentIndex) !== index;
-        });
-        localStorage.setItem("comments", JSON.stringify(commentFilter));
-        loadComments();
+        if (check.length === 0) {
+          alert("비밀 번호를 입력해주세요.");
+        } else if (check === JSON.parse(localStorage.getItem("comments"))[commentIndex].password) {
+          const commentFilter = JSON.parse(localStorage.getItem("comments")).filter((element, index) => {
+            return Number(commentIndex) !== index;
+          });
+          localStorage.setItem("comments", JSON.stringify(commentFilter));
+          loadComments();
+        } else {
+          alert("비밀번호가 틀렸습니다.");
+        }
       });
+
       commentFixedBtn.addEventListener("click", (event) => {
         const check = prompt("비밀 번호를 입력해주세요.");
         const commentIndex = event.target.parentElement.id.split(" ")[1];
