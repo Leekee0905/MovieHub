@@ -22,10 +22,12 @@ export const createMovieDetailTop = async () => {
       );
       createContainer.innerHTML = `
       <div class="card-detail" >
-      <img src="https://image.tmdb.org/t/p/w200${data.poster_path}" alt="${data.title}"/>
-        <h1>${data.title}</h1>
-        <p>${data.overview}</p>
-        <span>${data.vote_average}</span>
+        <div class="detail-box"> 
+          <h1>${data.title}</h1>
+          <p>${data.overview === "" ? "소개글이 없습니다." : data.overview}</p>
+          <span>평점 : ${data.vote_average}</span>
+        </div>
+        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title}"/>
       </div>
         
     `;
