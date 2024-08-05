@@ -7,7 +7,6 @@ export const createMovieDetailTop = async () => {
   const header = document.querySelector("#header");
 
   const movieId = new URLSearchParams(window.location.search).get("id");
-  console.log(movieId);
 
   if (movieId) {
     try {
@@ -20,14 +19,16 @@ export const createMovieDetailTop = async () => {
           <span>${data.vote_average}</span>
         </div>
         <figure>
-          <img src="https://image.tmdb.org/t/p/w200${data.poster_path}" alt="${data.title}"/>
+          <img src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title}"/>
         </figure>
     `;
+      // root.appendChild(createContainer);
       root.insertBefore(createContainer, header.nextSibling);
     } catch (e) {
       console.log("정보로드오류", e);
     }
   } else {
     createContainer.innerHTML = `<p>해당 영화를 찾을 수 없습니다.</p>`;
+    root.insertBefore(createContainer, header.nextSibling);
   }
 };

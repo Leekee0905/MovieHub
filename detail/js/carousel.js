@@ -6,8 +6,7 @@ const renderCarousel = async () => {
   const data = await getRecommendationsMovieData(queryId);
   const movies = data.results;
 
-  const header = root.querySelector("#header");
-  const detail = root.querySelector("#card-detail-container");
+  const detail = document.querySelector("#card-detail-container");
 
   const carouselContainer = document.createElement("div");
   carouselContainer.classList.add("carousel-container");
@@ -39,7 +38,9 @@ const renderCarousel = async () => {
   movies.forEach((e, index) => {
     const temp = `
     <div class="carousel-item">
-      <img id=${index} class="content" src="https://image.tmdb.org/t/p/w300${e.poster_path}" alt="..."/>
+      <a href='/detail/index.html?id=${e.id}'>
+        <img id=${index} class="content" src="https://image.tmdb.org/t/p/w300${e.poster_path}" alt="..."/>
+      </a>
     </div>`;
     carouselInner.innerHTML += temp;
   });
@@ -47,7 +48,9 @@ const renderCarousel = async () => {
   carousel.appendChild(carouselInner);
   carousel.appendChild(buttonContainer);
   carouselContainer.appendChild(carousel);
+
   root.insertBefore(carouselContainer, detail.nextSibling);
+
   const getItemsToShow = () => {
     if (window.innerWidth <= 600) {
       return 1;
@@ -66,7 +69,6 @@ const renderCarousel = async () => {
   const updateCarousel = () => {
     const offset = -index * (100 / itemsToShow);
     carouselInner.style.transform = `translateX(${offset}%)`;
-    console.log(offset, index, itemsToShow);
   };
 
   const showNextItem = () => {
