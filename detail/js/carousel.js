@@ -13,7 +13,7 @@ const renderCarousel = async () => {
 
   const title = document.createElement("h2");
   title.id = "recommend-movie";
-  title.innerHTML = "추천 영화";
+  title.innerHTML = "Recommend Movie";
   carouselContainer.appendChild(title);
   const carousel = document.createElement("div");
   carousel.classList.add("carousel");
@@ -26,11 +26,11 @@ const renderCarousel = async () => {
 
   const prevBtn = document.createElement("button");
   prevBtn.classList.add("carousel-button", "prev");
-  prevBtn.innerHTML = "<";
+  prevBtn.innerHTML = `<a id="prev"><i class="fa-solid fa-angle-left fa-2xl"></i>`;
 
   const nextBtn = document.createElement("button");
   nextBtn.classList.add("carousel-button", "next");
-  nextBtn.innerHTML = ">";
+  nextBtn.innerHTML = `<i class="fa-solid fa-angle-right fa-2xl"></i>`;
 
   buttonContainer.appendChild(prevBtn);
   buttonContainer.appendChild(nextBtn);
