@@ -1,3 +1,10 @@
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin: 36px;
+}
+
 .carousel {
   text-align: center;
   position: relative;
