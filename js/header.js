@@ -30,6 +30,7 @@ const createHeaderSearchInput = () => {
   document.querySelector("#search-form").appendChild(searchInput);
   document.querySelector("#search-form").appendChild(submitBtn);
   document.querySelector("#search-form").onsubmit = (event) => handleSearchBtn(event);
+  deleteSearchForm();
 };
 
 const navigateHeaderTitle = () => {
@@ -37,6 +38,16 @@ const navigateHeaderTitle = () => {
     window.location.href = "/";
   } else {
     window.location.href = "/moviehub";
+  }
+};
+
+const deleteSearchForm = () => {
+  const searchForm = document.getElementById("search-form");
+  // console.log(searchForm);
+  if (window.location.href.split("/").includes("detail")) {
+    searchForm.style.display = "none";
+  } else {
+    searchForm.style.display = "flex";
   }
 };
 
