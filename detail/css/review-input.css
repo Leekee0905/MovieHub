@@ -72,6 +72,11 @@ button {
   background-color: #1d1d1d;
 }
 
+.comment-time {
+  font-size: 14px;
+  padding-left: 15px;
+}
+
 .delete-btn,
 .fix-btn {
   position: absolute;

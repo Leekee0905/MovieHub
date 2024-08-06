@@ -1,4 +1,5 @@
 import { getSearchData, getTopRatedMoviesList } from "./getData.js";
+import { getLanguage } from "./language.js";
 import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 
 let START_PAGE = 1;
@@ -11,8 +12,8 @@ export const makeDataToCards = async () => {
   cardContainer.id = "card-container";
   cardContainer.appendChild(cardList);
   root.appendChild(cardContainer);
-
-  const data = await getTopRatedMoviesList(START_PAGE);
+  const language = getLanguage();
+  const data = await getTopRatedMoviesList(language, START_PAGE);
   const totalPage = data.total_pages;
   const html = makeCards(data);
   cardList.innerHTML = html;
@@ -62,9 +63,15 @@ export const handlePageNumberClick = async (event) => {
 };
 
 export const drawCards = async (pageNumber) => {
+  const language = getLanguage();
   const searchInput = document.querySelector("#search-input").value;
   const cardList = document.querySelector("#card-list");
-  const data = searchInput ? await getSearchData(searchInput, pageNumber) : await getTopRatedMoviesList(pageNumber);
+  let data;
+  if (searchInput) {
+    data = await getSearchData(language, searchInput, pageNumber);
+  } else {
+    data = await getTopRatedMoviesList(language, pageNumber);
+  }
   const html = makeCards(data);
   cardList.innerHTML = html;
 };
