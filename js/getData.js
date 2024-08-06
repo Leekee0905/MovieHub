@@ -14,8 +14,15 @@ const fetchData = async (url) => {
   return response.json();
 };
 
+const getLanguage = () => {
+  const language = localStorage.getItem("language") || "en-US";
+  console.log(`Current language: ${language}`);
+  return language;
+};
+
 export const getTopRatedMoviesList = async (params) => {
-  const url = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${params}`;
+  const language = getLanguage();
+  const url = `https://api.themoviedb.org/3/movie/top_rated?language=${language}&page=${params}`;
   return fetchData(url);
 };
 
@@ -30,7 +37,8 @@ export const getSearchData = async (keyword, page) => {
 };
 
 export const getUpcomeList = async () => {
-  const url = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1`;
+  const language = getLanguage();
+  const url = `https://api.themoviedb.org/3/movie/upcoming?language=${language}&page=1`;
   return fetchData(url);
 };
 
@@ -40,7 +48,8 @@ export const getRecommendationsMovieData = async (id) => {
 };
 
 export const getMovieDetail = async (id) => {
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+  const language = getLanguage();
+  const url = `https://api.themoviedb.org/3/movie/${id}?language=${language}`;
   return fetchData(url);
 };
 

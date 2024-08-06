@@ -9,8 +9,8 @@
   background-size: cover;
   background-position: center;
   position: relative;
-  justify-content: center;
 }
+
 #card-detail-container > div:nth-child(1) {
   position: absolute;
   top: 0;
@@ -26,7 +26,7 @@
   align-items: end;
   background-color: rgba(88, 88, 88, 0.2);
   z-index: 1;
-  justify-content: space-between;
+  justify-content: center;
 }
 .card-detail h1 {
   font-size: 45px;
