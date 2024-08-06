@@ -38,7 +38,7 @@ const renderCarousel = async () => {
   movies.forEach((e, index) => {
     const temp = `
     <div class="carousel-item">
-      <a href='/detail/index.html?id=${e.id}'>
+      <a href='/MovieHub/detail/index.html?id=${e.id}'>
         <img id=${index} class="content" src="https://image.tmdb.org/t/p/w300${e.poster_path}" alt="..."/>
       </a>
     </div>`;
