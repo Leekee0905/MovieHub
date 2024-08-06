@@ -1,11 +1,11 @@
 import makeDataToCards from "./card.js";
 import createHeaderSearchInput from "./header.js";
 import { language } from "./language.js";
-import { upcomeFunc } from "./upcoming.js";
+import { renderRandomUpcomingMovie } from "./upcoming.js";
 
-const initialize = async () => {
+export const initialize = async () => {
   createHeaderSearchInput();
-  await upcomeFunc();
+  await renderRandomUpcomingMovie();
   await makeDataToCards();
   language();
 };

@@ -73,6 +73,10 @@ export const review = (movieId) => {
       commentName.className = "comment-name";
       commentName.textContent = comment.name;
 
+      const commentTime = document.createElement("span");
+      commentTime.className = "comment-time";
+      commentTime.textContent = comment.time;
+
       const commentText = document.createElement("p");
       commentText.className = "comment-text";
       commentText.textContent = comment.text;
@@ -86,11 +90,12 @@ export const review = (movieId) => {
       commentFixedBtn.className = "fix-btn";
 
       newComment.appendChild(commentName);
+      commentName.appendChild(commentTime);
       newComment.appendChild(commentText);
       newComment.appendChild(commentDeleteBtn);
       newComment.appendChild(commentFixedBtn);
 
-      commentContainer.appendChild(newComment);
+      commentContainer.prepend(newComment);
 
       commentDeleteBtn.addEventListener("click", (event) => {
         const check = prompt("비밀 번호를 입력해주세요.");
@@ -105,10 +110,12 @@ export const review = (movieId) => {
 
       commentFixedBtn.addEventListener("click", (event) => {
         const check = prompt("비밀 번호를 입력해주세요.");
+        const time = new Date().toLocaleString();
         if (check === comment.password) {
           const newText = prompt("수정할 내용을 입력해주세요.");
           if (newText) {
             comments[index].text = newText;
+            comments[index].time = time;
             localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
             loadComments();
           }
@@ -118,10 +125,10 @@ export const review = (movieId) => {
       });
     });
   };
-
   const saveComment = (name, text, password) => {
     const comments = JSON.parse(localStorage.getItem(`comments_${movieId}`)) || [];
-    comments.push({ name, text, password });
+    const time = new Date().toLocaleString();
+    comments.push({ name, text, time, password });
     localStorage.setItem(`comments_${movieId}`, JSON.stringify(comments));
     loadComments();
   };

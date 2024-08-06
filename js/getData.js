@@ -1,3 +1,5 @@
+import { getLanguage } from "./language.js";
+
 const API_KEY =
   "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZWQ2MTA2NWIwOWVhN2I1YTU0YTI4ZDNjZWVhNzJlNiIsIm5iZiI6MTcyMTYxNTQ4My4xNDU4MTgsInN1YiI6IjY2OWRhYWYwZmZlYzQxZWExMzRiY2JlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vN9DGB3FAge_69w5AMXHuyAOuyBNdRJzzoRQWyt0FUY";
 
@@ -14,20 +16,12 @@ const fetchData = async (url) => {
   return response.json();
 };
 
-const getLanguage = () => {
-  const language = localStorage.getItem("language") || "en-US";
-  console.log(`Current language: ${language}`);
-  return language;
-};
-
-export const getTopRatedMoviesList = async (params) => {
-  const language = getLanguage();
+export const getTopRatedMoviesList = async (language, params) => {
   const url = `https://api.themoviedb.org/3/movie/top_rated?language=${language}&page=${params}`;
   return fetchData(url);
 };
 
-export const getSearchData = async (keyword, page) => {
-  const language = getLanguage();
+export const getSearchData = async (language, keyword, page) => {
   const url = `https://api.themoviedb.org/3/search/movie?language=${language}&query=${keyword}&page=${page}`;
   return fetchData(url);
 };
@@ -39,7 +33,8 @@ export const getUpcomeList = async () => {
 };
 
 export const getRecommendationsMovieData = async (id) => {
-  const url = `https://api.themoviedb.org/3/movie/${id}/recommendations`;
+  const language = getLanguage();
+  const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=${language}`;
   return fetchData(url);
 };
 

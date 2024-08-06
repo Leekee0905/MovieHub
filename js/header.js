@@ -1,5 +1,6 @@
 import { makeCards } from "./card.js";
 import { getSearchData } from "./getData.js";
+import { getLanguage } from "./language.js";
 import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 
 const createHeaderSearchInput = () => {
@@ -43,7 +44,6 @@ const navigateHeaderTitle = () => {
 
 const deleteSearchForm = () => {
   const searchForm = document.getElementById("search-form");
-  // console.log(searchForm);
   if (window.location.href.split("/").includes("detail")) {
     searchForm.style.display = "none";
   } else {
@@ -56,10 +56,11 @@ const handleSearchBtn = async (event) => {
   const currentPage = Number(document.querySelector(".active").innerHTML);
   const inputText = document.querySelector("#search-input").value.toLowerCase();
   const cardList = document.querySelector("#card-list");
+  const language = getLanguage();
   if (inputText === "") {
     alert("검색어를 입력해주세요.");
   } else {
-    const data = await getSearchData(inputText, currentPage);
+    const data = await getSearchData(language, inputText, currentPage);
     const listHTML = makeCards(data, inputText);
     updatePagination(data.total_pages, 1);
     addPaginationEventListeners(data.total_pages);
