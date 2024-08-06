@@ -1,8 +1,9 @@
 import { makeCards } from "./card.js";
 import { getSearchData, getTopRatedMoviesList, getUpcomeList } from "./getData.js";
+import { getLanguage } from "./language.js";
 import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 
-export const upcomeFunc = async () => {
+export const renderRandomUpcomingMovie = async () => {
   const data = await getUpcomeList();
   const root = document.querySelector("#root");
   const header = document.querySelector("#header");
@@ -24,7 +25,13 @@ export const upcomeFunc = async () => {
       clearTimeout(timer);
     }
     timer = setTimeout(async () => {
-      const searchData = e.target.value === "" ? await getTopRatedMoviesList(1) : await getSearchData(keyUpValues, 1);
+      const language = getLanguage();
+      let searchData;
+      if (keyUpValues === "") {
+        searchData = await getTopRatedMoviesList(language, 1);
+      } else {
+        searchData = await getSearchData(language, keyUpValues, 1);
+      }
       const cardList = document.querySelector("#card-list");
       cardList.innerHTML = makeCards(searchData);
       updatePagination(searchData.total_pages, 1);
@@ -38,7 +45,7 @@ export const upcomeFunc = async () => {
   });
 };
 
-const randomMovie = (upCome) => {
+export const randomMovie = (upCome) => {
   const upComeHtml = `
   <img src="https://image.tmdb.org/t/p/w500/${upCome.backdrop_path}"  alt="${upCome.title}" />
     <div class="upcoming-text">
