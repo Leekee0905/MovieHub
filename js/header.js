@@ -13,16 +13,16 @@ const createHeaderSearchInput = () => {
 
   searchInput.id = "search-input";
   searchInput.setAttribute("name", "keyword");
+  searchInput.setAttribute("placeholder", "키워드를 입력하세요");
   searchInput.autofocus = true;
 
   headerTitle.onclick = navigateHeaderTitle;
-  headerTitle.innerHTML = "LGS-Movie";
-
+  headerTitle.innerHTML = "MovieHub";
   formBox.id = "search-form";
 
   submitBtn.setAttribute("type", "submit");
   submitBtn.id = "search-btn";
-  submitBtn.innerHTML = "검색";
+  submitBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
 
   document.querySelector("#root").appendChild(createdHeader);
   document.querySelector("#header").appendChild(headerTitle);
@@ -30,16 +30,31 @@ const createHeaderSearchInput = () => {
   document.querySelector("#search-form").appendChild(searchInput);
   document.querySelector("#search-form").appendChild(submitBtn);
   document.querySelector("#search-form").onsubmit = (event) => handleSearchBtn(event);
+  deleteSearchForm();
 };
 
 const navigateHeaderTitle = () => {
-  window.location.href = "/moviehub";
+  if (window.location.href.split("/").includes("127.0.0.1:5500")) {
+    window.location.href = "/";
+  } else {
+    window.location.href = "/moviehub";
+  }
+};
+
+const deleteSearchForm = () => {
+  const searchForm = document.getElementById("search-form");
+  // console.log(searchForm);
+  if (window.location.href.split("/").includes("detail")) {
+    searchForm.style.display = "none";
+  } else {
+    searchForm.style.display = "flex";
+  }
 };
 
 const handleSearchBtn = async (event) => {
   event.preventDefault();
   const currentPage = Number(document.querySelector(".active").innerHTML);
-  const inputText = document.querySelector("#search-input").value;
+  const inputText = document.querySelector("#search-input").value.toLowerCase();
   const cardList = document.querySelector("#card-list");
   if (inputText === "") {
     alert("검색어를 입력해주세요.");

@@ -3,7 +3,7 @@ import { addPaginationEventListeners, updatePagination } from "./pagination.js";
 
 let START_PAGE = 1;
 
-const makeDataToCards = async () => {
+export const makeDataToCards = async () => {
   const root = document.querySelector("#root");
   const cardContainer = document.createElement("div");
   const cardList = document.createElement("ul");
@@ -16,14 +16,6 @@ const makeDataToCards = async () => {
   const totalPage = data.total_pages;
   const html = makeCards(data);
   cardList.innerHTML = html;
-
-  cardContainer.addEventListener("click", (event) => {
-    const cardBox = event.target.closest(".card-box");
-    if (cardBox) {
-      const id = cardBox.getAttribute("key");
-      handleCardAlert(id);
-    }
-  });
 
   updatePagination(totalPage, START_PAGE);
   addPaginationEventListeners(totalPage, START_PAGE);
@@ -39,10 +31,6 @@ const setActivePage = (page) => {
       pageNumber.classList.remove("active");
     }
   });
-};
-
-const handleCardAlert = (id) => {
-  alert(`영화 id: ${id}`);
 };
 
 export const handleNextClick = (totalpage) => {
@@ -67,7 +55,7 @@ export const handlePrevClick = (totalpage) => {
 
 export const handlePageNumberClick = async (event) => {
   if (event.target.classList.contains("page-number")) {
-    document.querySelector(".page-number.active")?.classList.remove("active");
+    document.querySelector(".page-number.active").classList.remove("active");
     event.target.classList.add("active");
     drawCards(Number(event.target.innerHTML));
   }
@@ -90,20 +78,20 @@ export const makeCards = (data) => {
       }
       return `
           <li class="card-list-contents">
-            <div class="card-box" key=${element.id}>
+            <a class="card-box" key=${element.id} href='/detail/index.html?id=${element.id}'>
+              <p class="card-vote">
+                평점: ${element.vote_average}
+              </p>
               <div class="card-image">
                   <img src="https://image.tmdb.org/t/p/w200${element.poster_path}" alt="${element.title}"/>
               </div>
-              <h3 class="card-title">
-                ${element.title}
-              </h3>
-              <div class="card-content">
-                ${element.overview}
-              </div>
-              <div class="card-vote">
-                평점: ${element.vote_average}
-              </div>
-            </div>
+                <h3 class="card-title">
+                  ${element.title}
+                </h3>
+                <div class="card-content">
+                  ${element.overview}
+                </div>
+            </a>
           </li>
         `;
     })

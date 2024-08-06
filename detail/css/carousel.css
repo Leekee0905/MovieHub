@@ -1,0 +1,89 @@
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin: 36px;
+}
+
+.carousel {
+  text-align: center;
+  position: relative;
+  width: 80%;
+  overflow: hidden;
+  margin: auto;
+}
+
+.carousel-container {
+  width: 100%;
+
+  margin: 36px;
+}
+
+#root > .recommend-movie {
+  font-size: 36px;
+  margin-bottom: 36px;
+  color: var(--main-blue);
+}
+
+#root > .carousel-container > h2 {
+  font-family: "Oswald", sans-serif;
+  padding-left: 50px;
+  font-size: 45px;
+  margin-bottom: 40px;
+  color: var(--main-blue);
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel-item {
+  min-width: 25%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.carousel-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  color: var(--main-blue);
+}
+
+@media (max-width: 1500px) {
+  .carousel-item {
+    min-width: 33.33%;
+  }
+}
+
+@media (max-width: 1140px) {
+  .carousel {
+    width: 100%;
+  }
+
+  .carousel-item {
+    min-width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-item {
+    min-width: 100%;
+  }
+}
