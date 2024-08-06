@@ -12,14 +12,16 @@ export const createMovieDetailTop = async () => {
     try {
       const data = await getMovieDetail(movieId);
       const images = await getMovieImages(movieId);
-      const mostVotedBackdrop = images.backdrops
-        .filter((e) => e.iso_639_1 === "en")
-        .sort((a, b) => b.vote_average - a.vote_average)[0].file_path;
-      console.log(data);
-      createContainer.setAttribute(
-        "style",
-        `background-image: url(https://image.tmdb.org/t/p/original${mostVotedBackdrop})`
-      );
+      const filteredBackdrops = images.backdrops.filter((e) => e.iso_639_1 === "en" || e.iso_639_1 === null);
+
+      if (filteredBackdrops.length > 0) {
+        const randomBackdrop = filteredBackdrops[Math.floor(Math.random() * filteredBackdrops.length)];
+        createContainer.setAttribute(
+          "style",
+          `background-image: url(https://image.tmdb.org/t/p/original${randomBackdrop.file_path})`
+        );
+      }
+
       createContainer.innerHTML = `
       <div class="card-detail" >
         <div class="detail-box"> 
@@ -27,10 +29,9 @@ export const createMovieDetailTop = async () => {
           <p>${data.overview === "" ? "소개글이 없습니다." : data.overview}</p>
           <span>평점 : ${data.vote_average}</span>
         </div>
-        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title}"/>
+        <img src="https://image.tmdb.org/t/p/w500${data.poster_path}" class="movie-poster" alt=""/>
       </div>
-        
-    `;
+      `;
       root.insertBefore(createContainer, header.nextSibling);
     } catch (e) {
       console.log("정보로드오류", e);

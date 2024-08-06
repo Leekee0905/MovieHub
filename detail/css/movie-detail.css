@@ -8,13 +8,10 @@
   overflow: hidden;
   background-size: cover;
   background-position: center;
-}
-
-.card-detail {
-  width: 100%;
-  padding: 0 20px;
-  display: flex;
   justify-content: center;
+}
+.card-detail {
+  display: flex;
   align-items: end;
   background-color: rgba(88, 88, 88, 0.2);
 }
@@ -22,11 +19,10 @@
   font-size: 45px;
   margin-bottom: 30px;
 }
-
 .movie-poster {
   width: 500px;
   margin-left: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 .detail-box {
   padding-bottom: 50px;
@@ -50,5 +46,11 @@
 @media (max-width: 900px) {
   .card-detail p {
     width: 400px;
+  }
+}
+
+@media (max-width: 1780px) {
+  .card-detail .movie-poster {
+    display: none;
   }
 }
