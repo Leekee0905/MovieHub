@@ -41,9 +41,8 @@
 }
 
 .card-title {
-  width: 268px;
+  width: 100%;
   font-size: 20px;
-  margin: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -63,7 +62,7 @@
 }
 
 .card-vote {
-  width: 280px;
+  width: 100%;
   font-size: 12px;
   padding-bottom: 10px;
   text-align: end;
@@ -103,9 +102,20 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (min-width: 1130px) and (max-width: 1520px) {
+
+@media screen and (min-width: 1130px) and (max-width: 1430px) {
   #card-list {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card-list-contents {
+    width: 360px;
+  }
+}
+
+@media screen and (min-width: 1430px) and (max-width: 1520px) {
+  #card-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
   }
 }
 @media screen and (min-width: 1520px) and (max-width: 1920px) {
