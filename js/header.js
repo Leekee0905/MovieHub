@@ -43,7 +43,7 @@ const navigateHeaderTitle = () => {
 const handleSearchBtn = async (event) => {
   event.preventDefault();
   const currentPage = Number(document.querySelector(".active").innerHTML);
-  const inputText = document.querySelector("#search-input").value;
+  const inputText = document.querySelector("#search-input").value.toLowerCase();
   const cardList = document.querySelector("#card-list");
   if (inputText === "") {
     alert("검색어를 입력해주세요.");
