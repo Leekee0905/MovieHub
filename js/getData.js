@@ -39,7 +39,8 @@ export const getUpcomeList = async () => {
 };
 
 export const getRecommendationsMovieData = async (id) => {
-  const url = `https://api.themoviedb.org/3/movie/${id}/recommendations`;
+  const language = getLanguage();
+  const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=${language}`;
   return fetchData(url);
 };
 
