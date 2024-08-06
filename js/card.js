@@ -78,7 +78,7 @@ export const makeCards = (data) => {
       }
       return `
           <li class="card-list-contents">
-            <a class="card-box" key=${element.id} href='/detail/index.html?id=${element.id}'>
+            <a class="card-box" key=${element.id} href='/MovieHub/detail/index.html?id=${element.id}'>
               <p class="card-vote">
                 평점: ${element.vote_average}
               </p>
