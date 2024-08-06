@@ -22,6 +22,7 @@ export const createMovieDetailTop = async () => {
         );
       }
 
+      const createContentBackground = document.createElement("div");
       createContainer.innerHTML = `
       <div class="card-detail" >
         <div class="detail-box"> 
@@ -31,7 +32,9 @@ export const createMovieDetailTop = async () => {
         </div>
         <img src="https://image.tmdb.org/t/p/w500${data.poster_path}" class="movie-poster" alt=""/>
       </div>
-      `;
+        
+    `;
+      createContainer.prepend(createContentBackground);
       root.insertBefore(createContainer, header.nextSibling);
     } catch (e) {
       console.log("정보로드오류", e);
