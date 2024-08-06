@@ -1,4 +1,5 @@
 import { getMovieDetail, getMovieImages } from "../../js/getData.js";
+import { review } from "./review-input.js";  
 
 export const createMovieDetailTop = async () => {
   const root = document.querySelector("#root");
@@ -22,7 +23,7 @@ export const createMovieDetailTop = async () => {
       );
       const createContentBackground = document.createElement("div");
       createContainer.innerHTML = `
-      <div class="card-detail" >
+      <div class="card-detail">
         <div class="detail-box"> 
           <h1>${data.title}</h1>
           <p>${data.overview === "" ? "소개글이 없습니다." : data.overview}</p>
@@ -34,6 +35,8 @@ export const createMovieDetailTop = async () => {
     `;
       createContainer.prepend(createContentBackground);
       root.insertBefore(createContainer, header.nextSibling);
+
+      review(movieId);  // 영화 ID를 인자로 전달하여 review 함수 호출
     } catch (e) {
       console.log("정보로드오류", e);
     }

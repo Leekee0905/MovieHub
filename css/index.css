@@ -5,6 +5,7 @@
 @import url("card-container.css");
 @import url("pagination.css");
 @import url("upcoming.css");
+@import url("langage-button.css");
 
 :root {
   --main-blue: #00a7f6;
