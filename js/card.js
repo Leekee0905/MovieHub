@@ -55,7 +55,7 @@ export const handlePrevClick = (totalpage) => {
 
 export const handlePageNumberClick = async (event) => {
   if (event.target.classList.contains("page-number")) {
-    document.querySelector(".page-number.active")?.classList.remove("active");
+    document.querySelector(".page-number.active").classList.remove("active");
     event.target.classList.add("active");
     drawCards(Number(event.target.innerHTML));
   }
