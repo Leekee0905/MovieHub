@@ -8,18 +8,15 @@
 
 #card-list {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+  display: grid;
   gap: 30px;
+  place-items: center;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .card-list-contents {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: inline-block;
   width: 320px;
   height: 550px;
   padding: 15px;
@@ -27,6 +24,7 @@
   border: 1px solid var(--main-white);
   border-radius: 5px;
   cursor: pointer;
+  margin: 20px;
 }
 
 .card-list-contents:hover {
@@ -43,9 +41,8 @@
 }
 
 .card-title {
-  width: 268px;
+  width: 100%;
   font-size: 20px;
-  margin: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -65,7 +62,7 @@
 }
 
 .card-vote {
-  width: 280px;
+  width: 100%;
   font-size: 12px;
   padding-bottom: 10px;
   text-align: end;
@@ -95,15 +92,34 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 1399px) and (min-width: 1024px) {
-  .card-list-contents {
-    width: 400px;
-    margin: 0 50px;
+@media (max-width: 745px) {
+  #card-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (min-width: 745px) and (max-width: 1130px) {
+  #card-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 1024px) {
+@media screen and (min-width: 1130px) and (max-width: 1430px) {
   #card-list {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card-list-contents {
+    width: 360px;
+  }
+}
+
+@media screen and (min-width: 1430px) and (max-width: 1520px) {
+  #card-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
+  }
+}
+@media screen and (min-width: 1520px) and (max-width: 1920px) {
+  #card-list {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

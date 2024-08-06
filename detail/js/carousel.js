@@ -90,7 +90,6 @@ const renderCarousel = async () => {
 
   window.addEventListener("resize", () => {
     itemsToShow = getItemsToShow();
-    console.log(itemsToShow);
     updateCarousel();
   });
 
