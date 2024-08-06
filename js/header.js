@@ -37,7 +37,7 @@ const navigateHeaderTitle = () => {
   if (window.location.href.split("/").includes("127.0.0.1:5500")) {
     window.location.href = "/";
   } else {
-    window.location.href = "/moviehub";
+    window.location.href = "/MovieHub";
   }
 };
 
