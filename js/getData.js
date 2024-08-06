@@ -26,13 +26,9 @@ export const getTopRatedMoviesList = async (params) => {
   return fetchData(url);
 };
 
-export const getPlayingMovies = async () => {
-  const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US`;
-  return fetchData(url);
-};
-
 export const getSearchData = async (keyword, page) => {
-  const url = `https://api.themoviedb.org/3/search/movie?language=en-US&query=${keyword}&page=${page}`;
+  const language = getLanguage();
+  const url = `https://api.themoviedb.org/3/search/movie?language=${language}&query=${keyword}&page=${page}`;
   return fetchData(url);
 };
 
