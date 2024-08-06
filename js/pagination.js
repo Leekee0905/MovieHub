@@ -39,3 +39,19 @@ export const addPaginationEventListeners = (totalpage) => {
     pageNumber.addEventListener("click", handlePageNumberClick);
   });
 };
+
+const scrollTopBtn = () => {
+  const scrollTopBtn = document.createElement("div");
+  scrollTopBtn.id = "scroll-top-btn";
+  scrollTopBtn.innerHTML = `<i class="fa-solid fa-arrow-up fa-beat-fade fa-xl"></i>`;
+  document.querySelector("#root").appendChild(scrollTopBtn);
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  });
+};
+
+scrollTopBtn();
