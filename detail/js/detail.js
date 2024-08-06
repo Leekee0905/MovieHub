@@ -21,6 +21,7 @@ export const createMovieDetailTop = async () => {
         "style",
         `background-image: url(https://image.tmdb.org/t/p/original${mostVotedBackdrop})`
       );
+      const createContentBackground = document.createElement("div");
       createContainer.innerHTML = `
       <div class="card-detail">
         <div class="detail-box"> 
@@ -30,7 +31,9 @@ export const createMovieDetailTop = async () => {
         </div>
         <img class="movie-poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title}"/>
       </div>
-      `;
+        
+    `;
+      createContainer.prepend(createContentBackground);
       root.insertBefore(createContainer, header.nextSibling);
 
       review(movieId);  // 영화 ID를 인자로 전달하여 review 함수 호출
