@@ -39,7 +39,6 @@ export const review = (movieId) => {
 
   const commentContainer = document.createElement("ul");
   commentContainer.id = "comment-container";
-
   namePasswordContainer.appendChild(nameInput);
   namePasswordContainer.appendChild(passWordInput);
 
