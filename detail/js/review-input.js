@@ -86,7 +86,7 @@ export const review = () => {
     commentButton.disabled = passwordLength < 4;
   };
 
-  passWordInput.addEventListener("input", function () {
+  passWordInput.addEventListener("input", () => {
     passWordInput.value = passWordInput.value.replace(/[^0-9]/g, "");
     validatePassword();
   });
@@ -146,10 +146,9 @@ export const review = () => {
             alert("빈 값입니다. 수정사항을 입력해주세요.");
           } else {
             const nowComment = JSON.parse(localStorage.getItem("comments"));
-            const fixedComment = nowComment.map((e, idx) => {
-              return { ...e, text: modifiedInput };
-            });
-            console.log(fixedComment);
+            const fixedComment = nowComment.map((e, idx) =>
+              idx === Number(commentIndex) ? { ...e, text: modifiedInput } : e
+            );
             localStorage.setItem("comments", JSON.stringify(fixedComment));
           }
         } else {
