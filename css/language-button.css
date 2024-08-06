@@ -5,7 +5,7 @@
 }
 
 .language-btn {
-  background-color: #007bff;
+  background-color: var(--main-blue);
   color: white;
   border: none;
   border-radius: 4px;
